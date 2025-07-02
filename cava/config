@@ -1,7 +1,3 @@
-## Configuration file for CAVA.
-# Remove the ; to change parameters.
-
-
 [general]
 
 # Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0
@@ -24,8 +20,7 @@
 # Bars' width and space between bars in number of characters.
 ; bars = 0
 ; bar_width = 2
-; bar_spacing = 1
-# bar_height is only used for output in "noritake" format
+; bar_spacing = 1 # bar_height is only used for output in "noritake" format
 ; bar_height = 32
 
 # For SDL width and space between bars is in pixels, defaults are:

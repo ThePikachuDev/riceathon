@@ -1,0 +1,15 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+source $ZSH/oh-my-zsh.sh
+
+alias h="cd ~"
+alias i="sudo dnf install -y"
+alias yta="yt-dlp -x --audio-format mp3 --embed-metadata --embed-thumbnail --add-metadata "
+
+eval "$(zoxide init --cmd cd zsh)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

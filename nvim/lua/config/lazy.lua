@@ -1,4 +1,3 @@
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -15,10 +14,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -56,7 +51,6 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "0"
 
--- Remove colorcolumn on every buffer
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
 	callback = function()
@@ -90,23 +84,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
--- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
 		-- import your plugins
 		{ import = "plugins" },
 	},
-	-- checker = { enabled = false },
-	-- Configure any other settings here. See the documentation for more details.
-	-- colorscheme that will be used when installing plugins.
 	install = { colorscheme = { "habamax" } },
-	-- automatically check for plugin updates
 	checker = { enabled = true, notify = false },
 })
 
 require("lspconfig").lua_ls.setup({})
--- require("lspconfig").ts_ls.setup({})
--- TypeScript
 require("lspconfig").ts_ls.setup({
 	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 	cmd = { "typescript-language-server", "--stdio" },
@@ -114,14 +101,10 @@ require("lspconfig").ts_ls.setup({
 
 require("nvim-ts-autotag").setup({
 	opts = {
-		-- Defaults
-		enable_close = true, -- Auto close tags
-		enable_rename = true, -- Auto rename pairs of tags
-		enable_close_on_slash = false, -- Auto close on trailing </
+		enable_close = true,
+		enable_rename = true,
+		enable_close_on_slash = false,
 	},
-	-- Also override individual filetype configs, these take priority.
-	-- Empty by default, useful if one of the "opts" global settings
-	-- doesn't work well in a specific filetype
 	per_filetype = {
 		["html"] = {
 			enable_close = false,
