@@ -20,18 +20,6 @@ ShellRoot {
             command_text: "S"
             index: 1
         }
-        // Button {
-        //     command: "systemctl suspend"
-        //     keybind: Qt.Key_U
-        //     text: "Suspend"
-        //     icon: "suspend"
-        // }
-        // Button {
-        //     command: "systemctl hibernate"
-        //     keybind: Qt.Key_H
-        //     text: "Hibernate"
-        //     icon: "hibernate"
-        // }
         Button {
             command: "systemctl reboot"
             keybind: Qt.Key_D

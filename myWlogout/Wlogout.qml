@@ -7,8 +7,6 @@ import Quickshell.Wayland
 Variants {
     id: root
 
-    // Somewhere in your root QML item
-
     property color backgroundColor: "#e60c0c0c"
     property color buttonColor: "#16161D"
     property color buttonBorderColor: "#DCD7BA"
@@ -38,24 +36,6 @@ Variants {
         contentItem {
             focus: true
 
-            // Keys.onPressed: event => {
-            //     const maxIndex = model - 1;
-            //     if (event.key === Qt.Key_Left || event.key === Qt.Key_H) {
-            //         focusIndex = focusIndex == 0 ? 0 : (focusIndex - 1);
-            //     } else if (event.key === Qt.Key_Right || event.key === Qt.Key_L) {
-            //         focusIndex = focusIndex == buttons.length - 1 ? 0 : (focusIndex + 1);
-            //     } else if (event.key === Qt.Key_Up || event.key === Qt.Key_K) {
-            //         if( focusIndex == (buttons.length / 2) - 1 ){
-            //
-            //
-            //         }
-            //         focusIndex = || focusIndex == 0 ? 0 : (focusIndex + 2);
-            //
-            //     } else if (event.key === Qt.Key_Down || event.key === Qt.Key_J) {} else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-            //         buttons[focusIndex].exec();
-            //     }
-            //     event.accepted = true;
-            // }
             Keys.onPressed: event => {
                 if (event.key == Qt.Key_Escape || event.key == Qt.Key_Q) {
                     Qt.quit();
@@ -65,11 +45,6 @@ Variants {
                         if (event.key == button.keybind)
                             button.exec();
                     }
-
-                    // arrow keys and hjkl to move around
-                    // left,right or hl -> +i -i
-                    // up , down or jk -> +2i -2i
-
                 }
             }
         }
@@ -131,10 +106,7 @@ Variants {
                             }
 
                             color: ma.containsMouse ? buttonHoverColor : buttonColor
-                            // border.color: buttonBorderColor
-                            // border.width: ma.containsMouse ? 0 : 0.5
 
-                            // Shortcut Rectangle
                             Rectangle {
                                 anchors {
                                     top: parent.top
@@ -175,7 +147,6 @@ Variants {
                             Text {
                                 anchors {
                                     top: icon.bottom
-                                    // topMargin: 20
                                     horizontalCenter: parent.horizontalCenter
                                 }
 
@@ -191,20 +162,3 @@ Variants {
         }
     }
 }
-
-// base00 = "#1B2A26";
-//     base01 = "#355E3B";
-//     base02 = "#79A86E";
-//     base03 = "#C7D8A3";
-//     base04 = "#2E474F";
-//     base05 = "#3AAFA9";
-//     base06 = "#7DE3C1";
-//     base07 = "#E3FAF4";
-//     base08 = "#3D2E24";
-//     base09 = "#796C5D";
-//     base0A = "#D4B58F";
-//     base0B = "#F2DBA1";
-//     base0C = "#6283C5";
-//     base0D = "#2B3A62";
-//     base0E = "#A4B0CC";
-//     base0F = "#F9F9F9";

@@ -18,23 +18,10 @@ Rectangle {
         height: parent.height
     }
 
-    // Button {
-    //     text: "Its not working, let me out"
-    //     onClicked: context.unlocked()
-    // }
-
-    // Keys.onPressed: event => {
-    //     if (event.key == Qt.Key_Q | event.key == Qt.Key_Escape) {
-    //         context.unlocked();
-    //     }
-    // }
-
     Column {
         id: clock
         anchors {
-            // horizontalCenter: parent.horizontalCenter
             left: parent.left
-            // left: parent.left
             top: parent.top
             topMargin: 360
 
@@ -86,8 +73,6 @@ Rectangle {
     }
 
     ColumnLayout {
-        // Uncommenting this will make the password entry invisible except on the active monitor.
-        // visible: Window.active
 
         anchors {
             top: parent.top
@@ -120,10 +105,8 @@ Rectangle {
                 echoMode: TextInput.Password
                 inputMethodHints: Qt.ImhSensitiveData
 
-                // Update the text in the context when the text in the box changes.
                 onTextChanged: root.context.currentText = this.text
 
-                // Try to unlock when enter is pressed.
                 onAccepted: root.context.tryUnlock()
 
                 Connections {
@@ -155,7 +138,6 @@ Rectangle {
                 }
                 padding: 10
 
-                // don't steal focus from the text box
                 focusPolicy: Qt.NoFocus
 
                 enabled: !root.context.unlockInProgress && root.context.currentText !== ""
