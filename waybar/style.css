@@ -1,0 +1,187 @@
+/* Cozy Dark Theme for Waybar */
+/* Independent color scheme - no pywal dependency */
+
+/* Define monochromatic dark color palette */
+@define-color background #0a0a0a;
+@define-color foreground #e6e6e6;
+@define-color color1 #ffffff;     /* White accent */
+@define-color color2 #b8b8b8;     /* Light gray */
+@define-color color3 #8a8a8a;     /* Medium gray */
+@define-color color4 #6b6b6b;     /* Dark gray */
+@define-color color5 #4d4d4d;     /* Darker gray */
+@define-color color6 #333333;     /* Very dark gray */
+@define-color color7 #1a1a1a;     /* Almost black */
+@define-color color8 #666666;     /* Mid gray */
+
+/* Additional variables for consistency */
+@define-color material_dark alpha(@color6, 0.8);
+@define-color accent_secondary alpha(@color2, 0.9);
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: alpha(@background, 0.85);
+    color: @foreground;
+    border-radius: 8px;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+#workspaces {
+    background-color: @material_dark;
+    border-radius: 6px;
+    margin: 3px;
+    margin-left: 4px;
+    padding-right: 0px;
+    padding-left: 3px;
+}
+
+#workspaces button {
+    padding: 0 4px;
+    color: @foreground;
+    background-color: transparent;
+    border-radius: 4px;
+    margin: 2px 4px;
+    min-width: 20px;
+}
+
+#workspaces button.active {
+    background-color: @color1;
+    color: @background;
+    min-width: 24px;
+    box-shadow: rgba(0, 0, 0, 0.288) 1px 1px 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#workspaces button:hover {
+    background: @accent_secondary;
+    color: @background;
+    box-shadow: rgba(0, 0, 0, 0.288) 1px 1px 3px;
+}
+
+#workspaces button.urgent {
+    background-color: @color1;
+    color: @background;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#temperature,
+#custom-power,
+#window {
+    padding: 0 6px;
+    margin: 3px 2px;
+    color: @foreground;
+    border-radius: 6px;
+    background-color: @material_dark;
+}
+
+#clock {
+    background-color: @color1;
+    color: @background;
+    font-weight: bold;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 6px;
+}
+
+#battery {
+    padding-right: 8px;
+    padding-left: 6px;
+}
+
+#battery.charging,
+#battery.plugged {
+    background-color: @color2;
+    color: @background;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @color1;
+    color: @background;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: @material_dark;
+        color: @color1;
+    }
+}
+
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#tray {
+    padding-right: 8px;
+    padding-left: 6px;
+}
+
+#temperature.critical {
+    background-color: @color2;
+    color: @background;
+}
+
+#network.disconnected {
+    background-color: @color8;
+    color: @foreground;
+}
+
+#pulseaudio.muted {
+    background-color: @color8;
+    color: @foreground;
+}
+
+#custom-power {
+    background-color: @color1;
+    color: @background;
+    margin-right: 4px;
+    padding-right: 8px;
+    padding-left: 6px;
+    font-size: 13px;
+}
+
+#window {
+    margin-left: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @color2;
+}
+
+tooltip {
+    background-color: @background;
+    border-radius: 6px;
+    border: 1px solid @color1;
+}
+
+tooltip label {
+    color: @foreground;
+}
