@@ -13,5 +13,3 @@ alias nrs="sudo nixos-rebuild switch"
 alias yta="yt-dlp -x --audio-format mp3 --embed-metadata --embed-thumbnail --add-metadata "
 
 eval "$(zoxide init --cmd cd zsh)"
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

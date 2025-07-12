@@ -30,6 +30,38 @@ if you want to use these widgets you will have to install [Quickshell](https://q
 quickshell -p /path/to/widgetDirectory 
 ```
 
+## Using My Config : 
+you can just copy and paste most of the files to their respective location ( like moving waybar/ folder to .config/waybar folder and almost same of every other config folder ) and they'll work out of box if you have installed their respective packages.
+
+for setting up zsh prompt , first install zsh for you distro : 
+For fedora : 
+```
+sudo dnf install zsh
+```
+
+For Arch linux ( btw ) : 
+```
+sudo pacman -S zsh
+```
+or
+```
+yay -S zsh
+```
+
+After installing zsh , i have create a script to install the plugins i use : 
+```
+cp .zshrc ~/.zshrc
+```
+```
+chmod +x ./zsh-setup.sh
+```
+
+This will install oh my zsh and 2 amazing plugins i use with zsh : 
+```
+./zsh-setup.sh
+```
+
+
 ### Some Honorable mentions :
 
 - Tmux : A terminal Multiplexer
