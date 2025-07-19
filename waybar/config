@@ -106,7 +106,6 @@
         "format": "M : {}%",
         "interval": 2
     },
-
     "battery": {
         "states": {
             "good": 80,
@@ -119,7 +118,6 @@
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
     },
-
     "network": {
         "format-wifi": " {signalStrength}%",
         "format-ethernet": " {ipaddr}",
@@ -128,7 +126,6 @@
         "format-alt": " {ipaddr}",
         "on-click-right": "nm-connection-editor"
     },
-
     "pulseaudio": {
         "format": "V : {icon} {volume}%",
         "format-muted": " Muted",
@@ -137,7 +134,6 @@
         },
         "on-click": "pavucontrol"
     },
-
     "custom/power": {
         "format": "",
         "on-click": "wlogout",

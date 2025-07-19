@@ -7,28 +7,22 @@ Rectangle {
     id: root
     required property LockContext context
     readonly property ColorGroup colors: Window.active ? palette.active : palette.inactive
-
     color: "black"
-
     Image {
         id: backgroundImage
         source: "./wall.jpg"
-
         width: parent.width
         height: parent.height
     }
-
     Column {
         id: clock
         anchors {
             left: parent.left
             top: parent.top
             topMargin: 360
-
             leftMargin: 160
         }
         spacing: 4
-
         Text {
             id: timeText
             text: {
@@ -46,7 +40,6 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
         }
-
         Text {
             id: infoText
             text: {
@@ -61,35 +54,29 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
         }
-
         Timer {
             interval: 1000
             running: true
             repeat: true
             onTriggered: clock.date = new Date()
         }
-
         property var date: new Date()
     }
 
     ColumnLayout {
-
         anchors {
             top: parent.top
             topMargin: 480
             left: parent.left
             leftMargin: 170
         }
-
         RowLayout {
             TextField {
                 id: passwordBox
-
                 implicitWidth: 200
                 implicitHeight: 35
                 padding: 10
                 color: "#fff"
-
                 background: Rectangle {
                     anchors.fill: parent
                     color: "#fff"
@@ -99,19 +86,14 @@ Rectangle {
                 placeholderText: "Password"
                 placeholderTextColor: "#fff"
                 font.pointSize: 10
-
                 focus: true
                 enabled: !root.context.unlockInProgress
                 echoMode: TextInput.Password
                 inputMethodHints: Qt.ImhSensitiveData
-
                 onTextChanged: root.context.currentText = this.text
-
                 onAccepted: root.context.tryUnlock()
-
                 Connections {
                     target: root.context
-
                     function onCurrentTextChanged() {
                         passwordBox.text = root.context.currentText;
                     }
@@ -122,7 +104,6 @@ Rectangle {
                 text: ""
                 implicitHeight: 35
                 implicitWidth: 35
-
                 background: Rectangle {
                     anchors.fill: parent
                     color: "#fff"
@@ -137,9 +118,7 @@ Rectangle {
                     anchors.margins: 4
                 }
                 padding: 10
-
                 focusPolicy: Qt.NoFocus
-
                 enabled: !root.context.unlockInProgress && root.context.currentText !== ""
                 onClicked: root.context.tryUnlock()
             }

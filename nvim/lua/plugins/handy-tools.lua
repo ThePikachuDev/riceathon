@@ -82,5 +82,25 @@ return { {
     dependencies = { "nvim-treesitter/nvim-treesitter" }
 }, {
     'vimwiki/vimwiki'
+}, {
+    "ellisonleao/glow.nvim", config = true, cmd = "Glow"
+}, {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+}, {
+    {
+        "nvzone/typr",
+        dependencies = "nvzone/volt",
+        opts = {},
+        cmd = { "Typr", "TyprStats" },
+    },
+    { "nvzone/timerly", cmd = "TimerlyToggle" },
+    {
+        "nvzone/minty",
+        cmd = { "Shades", "Huefy" },
+    },
+}, {
+    "folke/zen-mode.nvim",
 }
 }

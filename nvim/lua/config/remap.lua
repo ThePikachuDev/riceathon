@@ -9,15 +9,15 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>vwm", function()
-	require("vim-with-me").StartVimWithMe()
-end)
+-- vim.keymap.set("n", "<leader>vwm", function()
+--     require("vim-with-me").StartVimWithMe()
+-- end)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<leader>svwm", function()
-	require("vim-with-me").StopVimWithMe()
+    require("vim-with-me").StopVimWithMe()
 end)
 
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -44,13 +44,45 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>")
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
+-- this keybind will source your file on pressing <leader><leader ( for me its <space><space> )
 vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
+    vim.cmd("so")
 end)
 
 -- My custom keybinds
 
 vim.keymap.set("n", "<leader>lx", function()
-	local current_state = vim.diagnostic.config().virtual_text
-	vim.diagnostic.config({ virtual_text = not current_state })
+    local current_state = vim.diagnostic.config().virtual_text
+    vim.diagnostic.config({ virtual_text = not current_state })
 end, { desc = "Toggle LSP diagnostics virtual text" })
+
+function RemoveAllComments()
+    local ts_utils = require("nvim-treesitter.ts_utils")
+    local bufnr = vim.api.nvim_get_current_buf()
+    local parser = vim.treesitter.get_parser(bufnr)
+    local tree = parser:parse()[1]
+    local root = tree:root()
+
+    local comments = {}
+    local function find_comments(node)
+        for child in node:iter_children() do
+            if child:type():find("comment") then
+                table.insert(comments, child)
+            else
+                find_comments(child)
+            end
+        end
+    end
+
+    find_comments(root)
+
+    for i = #comments, 1, -1 do
+        local node = comments[i]
+        local start_row, start_col, end_row, end_col = node:range()
+        vim.api.nvim_buf_set_text(bufnr, start_row, start_col, end_row, end_col, {})
+    end
+end
+
+-- this keybind will remove all the comments in the current file when you press <leader>rc ( for me its <space>rc )
+vim.keymap.set("n", "<leader>rc", RemoveAllComments, { desc = "Remove all comments" })
+vim.keymap.set("n", "<leader>tc", "<cmd>SupermavenToggle<CR>", { desc = "Remove all comments" })

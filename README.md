@@ -5,10 +5,10 @@
 ## Screenshots 
 
 ![lightScreen_fastfetch](./previews/lightScreen_fastfetch.png)
-![darkScreen_fastfetch](./previews/darkScreen_fastfetch.png)
 ![kew_nvim](./previews/kew_nvim.png)
-![lock_screen](./previews/lock_screen.webp)
 ![myOwn_Power_widget](./previews/myOwn_Power_widget.png)
+![lock_screen](./previews/lock_screen.webp)
+![darkScreen_fastfetch](./previews/darkScreen_fastfetch.png)
 
 # Tools/Softwares I use :
 
@@ -61,16 +61,23 @@ This will install oh my zsh and 2 amazing plugins i use with zsh :
 ./zsh-setup.sh
 ```
 
+## Installing Kew CLI :
+For Fedora Users , i recommend using [homebrew](https://brew.sh/) , which is an amazing package manager to have on a fedora machine as dnf doesn't support as much packages out of the box and setting up rpm ( third party repos ) is not the best thing to do in my opinion
+install homebrew and install kew with this commmand : 
+```
+brew install kew
+```
 
+For Arch Linux Users , it is available on AUR packages : 
+```
+yay -S kew-git
+```
+
+For other linux distro users , you can either compile it from source code or look for another way ( like installing homebrew or finding a pre compiled binary ,etc.) .
+ 
 ### Some Honorable mentions :
 
 - Tmux : A terminal Multiplexer
 - Browsers: firefox , zen and brave 
 - Waypaper : A Gui Wallpaper Switcher
-
-
-
-
-
-
 
